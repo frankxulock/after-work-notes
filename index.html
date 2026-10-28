@@ -3,58 +3,239 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="五則給上班族的短文。每一則都有一行今天就能照做的做法。">
-  <meta property="og:title" content="下班後用得上的五個小工具">
-  <meta property="og:description" content="五則給上班族的短文。每一則都有一行今天就能照做的做法。">
+  <meta name="description" content="五個下班後用得上的小工具：晚上的訊息、這個月能花的錢、加班紀錄、十五分鐘副業、發薪日轉帳。">
   <title>下班後用得上的五個小工具</title>
   <style>
     body { margin: 0; font: 16px/1.6 -apple-system, "PingFang TC", sans-serif; background: #f6f3ee; color: #1c1917; }
     main { max-width: 40rem; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
     h1 { font-size: 1.7rem; line-height: 1.3; }
+    h2 { font-size: 1.15rem; margin: 0 0 .4rem; }
     .card { background: #fff; border: 1px solid #e7e5e4; border-radius: 12px; padding: 1rem 1.1rem; margin: 1rem 0; }
     .muted { color: #57534e; }
-    pre { white-space: pre-wrap; word-break: break-word; font: inherit; }
+    label { display: block; margin: .6rem 0 .2rem; font-size: .92rem; }
+    input, button { font: inherit; }
+    input { width: 100%; box-sizing: border-box; padding: .55rem .7rem; border: 1px solid #d6d3d1; border-radius: 8px; background: #fff; }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; }
+    button { margin-top: .8rem; background: #9a3412; color: #fff; border: 0; border-radius: 8px; padding: .55rem .9rem; }
+    button.ghost { background: #fff; color: #9a3412; border: 1px solid #9a3412; }
+    .result { margin-top: .8rem; padding: .7rem .8rem; background: #fff7ed; border-radius: 8px; }
+    table { width: 100%; border-collapse: collapse; margin-top: .8rem; font-size: .92rem; }
+    th, td { text-align: left; padding: .35rem .2rem; border-bottom: 1px solid #e7e5e4; }
+    .big { font-size: 1.6rem; font-weight: 700; }
   </style>
 </head>
 <body>
   <main>
     <h1>下班後用得上的五個小工具</h1>
-    <p>五則給上班族的短文。每一則都有一行今天就能照做的做法。</p>
-    <article class="card" id="after-hours-line">
-      <h2>下班後主管還在丟 LINE</h2>
-      <p>晚上九點群組跳一則「看一下」。不回怕被記，回了明天還是從這則開始累。</p>
-      <p><strong>今天就能用</strong></p>
-      <pre>行事曆標題直接貼：【可等】主題｜明天 10:00 再回</pre>
-      <p class="muted">沒寫截止時間的訊息，不在當下回。先把這行貼進明天 10:00 的行事曆，今晚就停。</p>
-    </article>
-    <article class="card" id="salary-gone">
-      <h2>薪水入帳當天就沒了</h2>
-      <p>發薪日房租、機車貸、伙食先扣掉，晚上打開 App 只剩幾千，不知道差在哪一筆。</p>
-      <p><strong>今天就能用</strong></p>
-      <pre>可花 = 入帳金額 − 房租 − 貸款 − 伙食</pre>
-      <p class="muted">入帳當天早上先把這三筆轉走。剩下的數字才是這個月能花的，不要等晚上才對帳。</p>
-    </article>
-    <article class="card" id="overtime-unpaid">
-      <h2>人走了，加班時數還是零</h2>
-      <p>工時系統準時打卡，人還坐在位子上改報表，月底加班時數是 0。</p>
-      <p><strong>今天就能用</strong></p>
-      <pre>表格四欄：日期｜開始｜結束｜這段做了什麼</pre>
-      <p class="muted">人還沒走就先記一列。沒有這張表，月底沒有東西可以拿去談。</p>
-    </article>
-    <article class="card" id="no-brain-after-work">
-      <h2>下班後想做副業，腦子已經關機</h2>
-      <p>白天被會議切碎，晚上打開空白文件十分鐘就關掉，副業停在同一個標題。</p>
-      <p><strong>今天就能用</strong></p>
-      <pre>今晚只做一件 15 分鐘的事，做完就關檔</pre>
-      <p class="muted">不要排兩小時。標題底下只留下一句話，寫完這句就收。</p>
-    </article>
-    <article class="card" id="emergency-fund-stuck">
-      <h2>緊急預備金每個發薪日都從零開始</h2>
-      <p>每個月想先存一筆，發薪隔週就拿去補卡費和健檢，戶頭還是停在同一個數字。</p>
-      <p><strong>今天就能用</strong></p>
-      <pre>發薪日 09:00 固定轉 1000，金額小到不會失敗</pre>
-      <p class="muted">先讓這筆自動轉走，再談六個月生活費。轉不成的大數字，等於沒轉。</p>
-    </article>
+    <p class="muted">數字只留在這台瀏覽器，不會送出去。</p>
+
+    <section class="card" id="after-hours-line">
+      <h2>晚上的訊息，要不要回</h2>
+      <p>沒寫截止時間的，19:00 之後預設明天 10:00 再回。</p>
+      <label for="msg-time">訊息進來的時間</label>
+      <input id="msg-time" type="time" value="21:00">
+      <button type="button" id="msg-check">判斷</button>
+      <div class="result" id="msg-result" hidden></div>
+    </section>
+
+    <section class="card" id="salary-gone">
+      <h2>這個月實際能花多少</h2>
+      <p>入帳當天早上先把固定支出轉走，剩下的才是能花的。</p>
+      <div class="row">
+        <div>
+          <label for="pay">入帳金額</label>
+          <input id="pay" inputmode="numeric" value="45000">
+        </div>
+        <div>
+          <label for="rent">房租</label>
+          <input id="rent" inputmode="numeric" value="15000">
+        </div>
+        <div>
+          <label for="loan">貸款</label>
+          <input id="loan" inputmode="numeric" value="8000">
+        </div>
+        <div>
+          <label for="food">伙食</label>
+          <input id="food" inputmode="numeric" value="8000">
+        </div>
+      </div>
+      <button type="button" id="pay-calc">計算</button>
+      <div class="result" id="pay-result" hidden></div>
+    </section>
+
+    <section class="card" id="overtime-unpaid">
+      <h2>加班時數先記下來</h2>
+      <p>工時系統若是準時打卡，就用這張表留下人還沒走的時段。</p>
+      <div class="row">
+        <div>
+          <label for="ot-date">日期</label>
+          <input id="ot-date" type="date">
+        </div>
+        <div>
+          <label for="ot-note">這段做了什麼</label>
+          <input id="ot-note" placeholder="改月報">
+        </div>
+        <div>
+          <label for="ot-start">開始</label>
+          <input id="ot-start" type="time" value="18:30">
+        </div>
+        <div>
+          <label for="ot-end">結束</label>
+          <input id="ot-end" type="time" value="21:00">
+        </div>
+      </div>
+      <button type="button" id="ot-add">記一筆</button>
+      <p id="ot-total" class="big"></p>
+      <table>
+        <thead><tr><th>日期</th><th>時段</th><th>小時</th><th>內容</th></tr></thead>
+        <tbody id="ot-rows"></tbody>
+      </table>
+    </section>
+
+    <section class="card" id="no-brain-after-work">
+      <h2>今晚只做十五分鐘</h2>
+      <label for="task">今晚這一件事</label>
+      <input id="task" placeholder="把標題底下的第一句寫完">
+      <button type="button" id="task-start">開始 15 分鐘</button>
+      <button type="button" class="ghost" id="task-stop">停止</button>
+      <p id="task-clock" class="big">15:00</p>
+      <p class="muted" id="task-hint">時間到就關檔，不要加下一件。</p>
+    </section>
+
+    <section class="card" id="emergency-fund-stuck">
+      <h2>發薪日先轉一小筆</h2>
+      <p>金額小到不會失敗，固定在發薪日早上轉走。</p>
+      <div class="row">
+        <div>
+          <label for="save-day">發薪日（每月幾號）</label>
+          <input id="save-day" inputmode="numeric" value="5">
+        </div>
+        <div>
+          <label for="save-amount">轉帳金額</label>
+          <input id="save-amount" inputmode="numeric" value="1000">
+        </div>
+      </div>
+      <button type="button" id="save-make">產生提醒</button>
+      <div class="result" id="save-result" hidden></div>
+    </section>
   </main>
+  <script>
+    function money(value) {
+      var n = Number(String(value).replace(/,/g, ''));
+      return Number.isFinite(n) ? n : 0;
+    }
+    function minutes(value) {
+      var parts = String(value || '0:0').split(':');
+      return Number(parts[0]) * 60 + Number(parts[1]);
+    }
+    function pad(n) { return n < 10 ? '0' + n : String(n); }
+
+    var msgResult = document.getElementById('msg-result');
+    document.getElementById('msg-check').onclick = function () {
+      var hour = Number(document.getElementById('msg-time').value.slice(0, 2));
+      msgResult.hidden = false;
+      if (hour >= 19 || hour < 8) {
+        msgResult.textContent = '不要現在回。行事曆標題貼上：【可等】主題｜明天 10:00 再回';
+      } else {
+        msgResult.textContent = '這個時間可以回。回完就停，不要把後面的訊息也一起處理掉。';
+      }
+    };
+
+    var payResult = document.getElementById('pay-result');
+    document.getElementById('pay-calc').onclick = function () {
+      var left = money(document.getElementById('pay').value)
+        - money(document.getElementById('rent').value)
+        - money(document.getElementById('loan').value)
+        - money(document.getElementById('food').value);
+      payResult.hidden = false;
+      payResult.textContent = '這個月能花 ' + left.toLocaleString('zh-Hant') + '。入帳當天早上先把房租、貸款、伙食轉走。';
+    };
+
+    var otKey = 'after-work-overtime';
+    function loadOt() {
+      try { return JSON.parse(localStorage.getItem(otKey) || '[]'); }
+      catch (err) { return []; }
+    }
+    function renderOt() {
+      var rows = loadOt();
+      var body = document.getElementById('ot-rows');
+      body.innerHTML = '';
+      var total = 0;
+      rows.forEach(function (row) {
+        total += row.hours;
+        var tr = document.createElement('tr');
+        [row.date, row.start + '–' + row.end, row.hours.toFixed(1), row.note].forEach(function (text) {
+          var td = document.createElement('td');
+          td.textContent = text;
+          tr.appendChild(td);
+        });
+        body.appendChild(tr);
+      });
+      document.getElementById('ot-total').textContent = rows.length
+        ? '已記 ' + total.toFixed(1) + ' 小時'
+        : '';
+    }
+    document.getElementById('ot-date').value = new Date().toISOString().slice(0, 10);
+    document.getElementById('ot-add').onclick = function () {
+      var start = document.getElementById('ot-start').value;
+      var end = document.getElementById('ot-end').value;
+      var hours = (minutes(end) - minutes(start)) / 60;
+      if (!(hours > 0)) return;
+      var rows = loadOt();
+      rows.unshift({
+        date: document.getElementById('ot-date').value,
+        start: start,
+        end: end,
+        note: document.getElementById('ot-note').value || '未填',
+        hours: hours
+      });
+      localStorage.setItem(otKey, JSON.stringify(rows.slice(0, 60)));
+      renderOt();
+    };
+    renderOt();
+
+    var timer = null;
+    var left = 15 * 60;
+    var clock = document.getElementById('task-clock');
+    var hint = document.getElementById('task-hint');
+    function showClock() {
+      clock.textContent = pad(Math.floor(left / 60)) + ':' + pad(left % 60);
+    }
+    document.getElementById('task-start').onclick = function () {
+      var task = document.getElementById('task').value.trim();
+      if (!task) {
+        hint.textContent = '先寫今晚這一件事，再開始。';
+        return;
+      }
+      if (timer) clearInterval(timer);
+      left = 15 * 60;
+      showClock();
+      hint.textContent = '現在只做：' + task;
+      timer = setInterval(function () {
+        left -= 1;
+        showClock();
+        if (left <= 0) {
+          clearInterval(timer);
+          timer = null;
+          hint.textContent = '時間到。' + task + ' 做完就關檔。';
+        }
+      }, 1000);
+    };
+    document.getElementById('task-stop').onclick = function () {
+      if (timer) clearInterval(timer);
+      timer = null;
+      left = 15 * 60;
+      showClock();
+      hint.textContent = '已停止。時間到就關檔，不要加下一件。';
+    };
+
+    var saveResult = document.getElementById('save-result');
+    document.getElementById('save-make').onclick = function () {
+      var day = Math.min(28, Math.max(1, Math.round(money(document.getElementById('save-day').value)) || 5));
+      var amount = Math.max(1, Math.round(money(document.getElementById('save-amount').value)) || 1000);
+      saveResult.hidden = false;
+      saveResult.textContent = '每月 ' + day + ' 日 09:00，轉帳 ' + amount.toLocaleString('zh-Hant') + '。先設這筆，再談六個月生活費。';
+    };
+  </script>
 </body>
 </html>
