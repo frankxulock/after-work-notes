@@ -3,7 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="五個下班後用得上的小工具：晚上的訊息、這個月能花的錢、加班紀錄、十五分鐘副業、發薪日轉帳。">
+  <meta name="description" content="五個下班後用得上的小工具：晚上的訊息要不要回、這個月能花多少、加班紀錄、十五分鐘、發薪日轉帳。">
+  <link rel="canonical" href="https://frankxulock.github.io/after-work-notes/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://frankxulock.github.io/after-work-notes/">
+  <meta property="og:title" content="下班後用得上的五個小工具">
+  <meta property="og:description" content="晚上的訊息要不要回、這個月能花多少、加班怎麼記、十五分鐘、發薪日先轉一小筆。">
+  <meta property="og:locale" content="zh_TW">
   <title>下班後用得上的五個小工具</title>
   <style>
     body { margin: 0; font: 16px/1.6 -apple-system, "PingFang TC", sans-serif; background: #f6f3ee; color: #1c1917; }
@@ -28,6 +34,9 @@
   <main>
     <h1>下班後用得上的五個小工具</h1>
     <p class="muted">數字只留在這台瀏覽器，不會送出去。</p>
+    <p><a href="https://frankxulock.github.io/after-work-notes/">frankxulock.github.io/after-work-notes</a>
+      <button type="button" class="ghost" id="copy-link">複製連結</button>
+    </p>
 
     <section class="card" id="after-hours-line">
       <h2>晚上的訊息，要不要回</h2>
@@ -227,6 +236,18 @@
       left = 15 * 60;
       showClock();
       hint.textContent = '已停止。時間到就關檔，不要加下一件。';
+    };
+
+    document.getElementById('copy-link').onclick = function () {
+      var url = 'https://frankxulock.github.io/after-work-notes/';
+      var button = document.getElementById('copy-link');
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(function () {
+          button.textContent = '已複製';
+        });
+      } else {
+        button.textContent = url;
+      }
     };
 
     var saveResult = document.getElementById('save-result');
